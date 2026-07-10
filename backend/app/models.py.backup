@@ -1,0 +1,87 @@
+from sqlalchemy import Column, Integer, String, Text, DateTime
+from sqlalchemy.sql import func
+from sqlalchemy import ForeignKey
+
+from .database import Base
+
+class Email(Base):
+
+    __tablename__ = "emails"
+
+
+    id = Column(
+        Integer,
+        primary_key=True,
+        index=True
+    )
+
+
+    sender_email = Column(
+        String(255)
+    )
+
+
+    receiver_email = Column(
+        String(255)
+    )
+
+
+    subject = Column(
+        Text
+    )
+
+
+    body = Column(
+        Text
+    )
+
+
+    message_id = Column(
+        Text
+    )
+
+
+    received_at = Column(
+        DateTime,
+        server_default=func.now()
+    )
+
+
+    status = Column(
+        String(50),
+        default="NEW"
+    )
+
+class EmailURL(Base):
+
+    __tablename__ = "email_urls"
+
+
+    id = Column(
+        Integer,
+        primary_key=True,
+        index=True
+    )
+
+
+    email_id = Column(
+        Integer,
+        ForeignKey("emails.id"),
+        nullable=False
+    )
+
+
+    url = Column(
+        Text,
+        nullable=False
+    )
+
+
+    domain = Column(
+        String(255)
+    )
+
+
+    reputation_score = Column(
+        Integer
+    )
