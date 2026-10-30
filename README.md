@@ -55,6 +55,9 @@ Jira Incident Creation
 
 ---
 
+<img width="8889" height="5626" alt="diagram (3)" src="https://github.com/user-attachments/assets/0b900b0a-d985-4273-8325-7d887977a461" />
+
+---
 # Technologies
 
 ## Backend
